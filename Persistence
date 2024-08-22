@@ -1,1 +1,11 @@
+Tables:
+
+|Tactic | Technique | RiskName
+|Persistence | Boot or Logon Autostart Execution	| A process copied a suspicious file to the startup folder that might indicate a malicious persistence mechanism. Investigate the process tree and the file dropped.
+|Persistence | Scheduled Task/Job |	A process has scheduled an unusual task. Some malware schedules tasks to maintain persistence. If this task unexpected, review it.
+|Persistence | Create or Modify System Process |	A launch agent was created or modified. Adversaries may create or modify launch agents to execute payloads automatically at startup or on a repeated interval. Please check the process tree to determine if the new launch agent is malicious.
+|Persistence | External Remote Services |	The activity appears to be related to an adversary establishing persistence. The host may already be compromised and the activity should be investigated further to find the source.
+|Persistence | Registry Run Keys / Startup Folder |	A process made a suspicious change to the registry that might indicate a malicious persistence mechanism. Investigate the registry key.
+|Persistence | Launch Daemon | An executable was downloaded with a command line tool and then run as a service
+|Persistence | Accessibility Features	| A process chain bypassed Windows logon security.
 
