@@ -23,8 +23,6 @@ PyLOOBins is a Python SDK and command-line utility for programmatically interact
 
 4) server-side exploits - https://sploitify.haxx.it/
 5) Windows/AD environments - https://wadcoms.github.io/
-5) 
-5) 
 
 
   
