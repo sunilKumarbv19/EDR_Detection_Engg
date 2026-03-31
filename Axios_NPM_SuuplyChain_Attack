@@ -1,0 +1,47 @@
+Supply chain Compromise of axios npm Package
+
+NPM Axios Supply Chain Compromise
+
+A Github user account for a primary maintainer and developer for the widespread and basically open-source Node.js library "axios" was compromised. 
+The bad actor then abused this stolen account access to push a malicious release of the axios library with versions 1.14.1 and 0.30.4. 
+
+this backdoored release include a reference to a malicious "plain-crypto-js" (v4.21.1) packages was created and published a postinstall an hours prior to the supply chain attack.
+plain-crypto-js include a postinstall script (setup.js) that would be invoked and download to execute for further remote c2c capability, this affected all windows, linux, mac hosts that would have updated to or installed all affected version.
+
+MAC RAT malware sample:  https://lnkd.in/gMmiD5Ey (infec3d)
+
+Act before they pivot to more aggressive methods like data encryption and ransomware. Make sure to follow best practices:
+
+- Implement 1 day or 7 days limit for package installation date, installing a package that’s been out for a week significantly reduces its potential of being malicious. 
+- Rotate API keys constantly; a stolen access key is a threat actor’s best friend.
+
+Write Ups:
+- https://lnkd.in/g5gGzCZF
+- https://lnkd.in/gmP8zzqZ
+
+
+KQL For the detection:
+
+1) IOC based KQL -- Mitre CSTA0005
+
+Let AxiosIoCs = dynamic([sfrclak.com, 142.11.206.73]) // IOC Collections
+Proxy_Logs_table //where the Firewall , proxy logs available
+| where DestinationIP has_any (AxiosIoCs)
+| where URL has_any (AxiosIoCs)
+| Project TimeGenerated, HostName, UserName, SourceIP, DestinationIP,URL , Destination_Port
+| sort by TimeGenerated
+
+2) MAC Pattren Based KQL
+
+
+3) Windows Pattren Based KQL
+
+
+
+4) Linux Pattren Based KQL
+
+
+
+
+
+
